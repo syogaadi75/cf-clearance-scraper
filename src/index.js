@@ -26,14 +26,16 @@ const solveTurnstileMin = require('./endpoints/solveTurnstile.min')
 const solveTurnstileMax = require('./endpoints/solveTurnstile.max')
 const wafSession = require('./endpoints/wafSession')
 
-
+app.get('/', (req, res) => { 
+    res.send('Hello World!')
+})
 app.post('/cf-clearance-scraper', async (req, res) => {
 
     const data = req.body
 
-    // const check = reqValidate(data)
+    const check = reqValidate(data)
 
-    // if (check !== true) return res.status(400).json({ code: 400, message: 'Bad Request', schema: check })
+    if (check !== true) return res.status(400).json({ code: 400, message: 'Bad Request', schema: check })
 
     if (authToken && data.authToken !== authToken) return res.status(401).json({ code: 401, message: 'Unauthorized' })
 
