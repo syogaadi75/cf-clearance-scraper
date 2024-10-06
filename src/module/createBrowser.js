@@ -49,7 +49,7 @@ async function createBrowser() {
             args: [...chromium.args, '--hide-scrollbars', '--disable-web-security'],
             defaultViewport: chromium.defaultViewport,
             executablePath: process.env.NODE_ENV === 'production'
-                ? await chromium.executablePath()  // Use Sparticuz Chromium executable for production
+                ? await chromium.executablePath(`https://github.com/Sparticuz/chromium/releases/download/v127.0.0/chromium-v127.0.0-pack.tar`)
                 : path.resolve('C:/Program Files/Google/Chrome/Application/chrome.exe'), // Use local Chrome in dev
             headless: chromium.headless,  // Set headless to false to see the browser
             ignoreHTTPSErrors: true,  // Ignore HTTPS errors
