@@ -4,7 +4,7 @@ const port = process.env.PORT || 3000
 const bodyParser = require('body-parser')
 const authToken = process.env.authToken || null
 const cors = require('cors')
-const reqValidate = require('./module/reqValidate')
+const reqValidate = require('./src/module/reqValidate')
 
 global.browserLength = 0
 global.browserLimit = Number(process.env.browserLimit) || 20
@@ -19,12 +19,12 @@ if (process.env.NODE_ENV !== 'development') {
         server.timeout = global.timeOut
     } catch (e) { }
 }
-if (process.env.SKIP_LAUNCH != 'true') require('./module/createBrowser')
+if (process.env.SKIP_LAUNCH != 'true') require('./src/module/createBrowser')
 
-const getSource = require('./endpoints/getSource')
-const solveTurnstileMin = require('./endpoints/solveTurnstile.min')
-const solveTurnstileMax = require('./endpoints/solveTurnstile.max')
-const wafSession = require('./endpoints/wafSession')
+const getSource = require('./src/endpoints/getSource')
+const solveTurnstileMin = require('./src/endpoints/solveTurnstile.min')
+const solveTurnstileMax = require('./src/endpoints/solveTurnstile.max')
+const wafSession = require('./src/endpoints/wafSession')
 
 app.get('/', (req, res) => { 
     res.send('Hello World!')
